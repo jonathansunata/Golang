@@ -1,10 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+)
 
 func main() {
-	fmt.Println("Hello")
-	fmt.Println("Git Repo")
 
-	fmt.Println("Test")
+	http.ListenAndServe(":8080", nil)
 }
