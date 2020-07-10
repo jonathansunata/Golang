@@ -7,13 +7,17 @@ import (
 	"net/http"
 
 	"github.com/jonathansunata/Golang/models"
+	"gopkg.in/mgo.v2"
 )
 
 type UserController struct {
+	session *mgo.Session
 }
 
-func NewUserController() *UserController {
-	return &UserController{}
+func NewUserController(s *mgo.Session) *UserController {
+	return &UserController{
+		session: s,
+	}
 }
 
 func (uc *UserController) GetUser(w http.ResponseWriter, req *http.Request) {
