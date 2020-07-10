@@ -53,5 +53,4 @@ func (uc *UserController) CreateUser(w http.ResponseWriter, req *http.Request) {
 	json.NewEncoder(w).Encode(result)
 
 	w.WriteHeader(http.StatusCreated)
-	fmt.Fprintf(w, "%s\n", result)
 }
