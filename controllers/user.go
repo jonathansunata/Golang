@@ -40,6 +40,7 @@ func (uc *UserController) GetUser(w http.ResponseWriter, req *http.Request) {
 
 func (uc *UserController) CreateUser(w http.ResponseWriter, req *http.Request) {
 
+	w.Header().Set("Content-Type", "application/json")
 	u := models.User{}
 
 	json.NewDecoder(req.Body).Decode(&u)
@@ -51,7 +52,6 @@ func (uc *UserController) CreateUser(w http.ResponseWriter, req *http.Request) {
 	result, _ := collection.InsertOne(ctx, u)
 	json.NewEncoder(w).Encode(result)
 
-	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 	fmt.Fprintf(w, "%s\n", result)
 }
