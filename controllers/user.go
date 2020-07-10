@@ -32,3 +32,19 @@ func (uc *UserController) GetUser(w http.ResponseWriter, req *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	fmt.Fprintf(w, "%s\n", bs)
 }
+
+func (uc *UserController) CreateUser(w http.ResponseWriter, req *http.Request) {
+
+	u := models.User{}
+
+	json.NewDecoder(req.Body).Decode(&u)
+
+	bs, err := json.Marshal(u)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	fmt.Fprintf(w, "%s\n", bs)
+}
