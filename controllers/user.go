@@ -50,7 +50,8 @@ func (uc *UserController) CreateUser(w http.ResponseWriter, req *http.Request) {
 	defer cancel()
 
 	result, _ := collection.InsertOne(ctx, u)
-	json.NewEncoder(w).Encode(result)
 
 	w.WriteHeader(http.StatusCreated)
+
+	json.NewEncoder(w).Encode(result)
 }
