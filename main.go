@@ -5,4 +5,6 @@ import "fmt"
 func main() {
 	fmt.Println("Hello")
 	fmt.Println("Git Repo")
+
+	fmt.Println("Test")
 }
